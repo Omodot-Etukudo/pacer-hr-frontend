@@ -1,32 +1,43 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
     <router-view />
   </div>
 </template>
 
+<script>
+export default {
+  name: "App"
+};
+</script>
+
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Raleway";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
 }
-
-#nav {
-  padding: 30px;
+html {
+  scroll-behavior: smooth;
 }
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+input[type="text"]{
+	border:none;
 }
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus {
+  border: 1px solid #2a4365;
+  transition: border 1s;
+  border-radius: 5px;
+}
+textarea:focus {
+  border: 1px solid #2a4365;
+  transition: border 1s;
+  border-radius: 5px;
 }
 </style>
