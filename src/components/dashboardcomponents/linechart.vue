@@ -6,9 +6,9 @@
 import Chart from "chart.js";
 export default {
   methods: {
-    createChart(chartid, chartdata) {
+    createChart() {
       const ctx = document.getElementById("performance");
-      const mychart = new Chart(ctx, {
+      new Chart(ctx, {
         type: "line",
         data: {
           labels: [
@@ -23,7 +23,7 @@ export default {
             "September",
             "October",
             "November",
-            "December"
+            "December",
           ],
           datasets: [
             {
@@ -31,13 +31,13 @@ export default {
               label: "Average Employee Performance",
               data: [3.5, 2, 4.2, 4.6, 3, 3.5, 4],
               backgroundColor: [
-                "rgba(195,218,254,.5)"
+                "rgba(195,218,254,.5)",
                 // Blue
               ],
               borderColor: ["rgba(0,17,60,1)"],
-              borderWidth: 1
-            }
-          ]
+              borderWidth: 1,
+            },
+          ],
         },
         options: {
           responsive: true,
@@ -47,21 +47,21 @@ export default {
               {
                 ticks: {
                   beginAtZero: true,
-                  padding: 25
-                }
-              }
-            ]
-          }
-        }
+                  padding: 25,
+                },
+              },
+            ],
+          },
+        },
       });
-    }
+    },
   },
   data() {
     return {};
   },
   mounted() {
     this.createChart("performance");
-  }
+  },
 };
 </script>
 <style scoped></style>
