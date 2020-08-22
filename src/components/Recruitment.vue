@@ -45,6 +45,7 @@
           <button
             class="w-full hover:text-black text-gray-500 font-regular py-3 px-2 focus:outline-none hover:bg-gray-100 rounded-lg transition transition-colors duration-300 "
             type="button"
+            @click="sortBy('firstname')"
           >
             Sort by Name
           </button>
@@ -53,6 +54,7 @@
           <button
             class="w-full hover:text-black text-gray-500 font-regular py-3 px-2 focus:outline-none hover:bg-gray-100 rounded-lg transition transition-colors duration-300 "
             type="button"
+            @click="sortBy('role')"
           >
             Sort by Department
           </button>
@@ -212,6 +214,9 @@ export default {
   methods: {
     navigateTo() {
       this.$router.go(1);
+    },
+    sortBy(prop) {
+      this.applications.data.sort((a, b) => (a[prop] < b[prop] ? -1 : 1));
     },
   },
   name: "Employees",

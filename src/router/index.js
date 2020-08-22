@@ -17,12 +17,43 @@ import Createjob from "@/components/Createjob";
 import Performance from "@/components/Performance";
 import missing from "@/components/missing";
 import Survey from "@/components/Survey";
+import employeedashboard from "../components/employeecomponents/employeedashboard.vue";
+import employeeperformance from "../components/employeecomponents/employeeperformance.vue";
+import selfservice from "../components/employeecomponents/selfservice.vue";
+import myfinance from "../components/employeecomponents/myfinance.vue";
+import leaveapplication from "../components/employeecomponents/leaveapplication.vue";
 
 Vue.use(Router);
 
 export default new Router({
   mode: "history",
   routes: [
+    {
+      path: "/employeedashboard",
+      name: "employeedashboard",
+      component: employeedashboard,
+    },
+    {
+      path: "/selfservice",
+      name: "selfservice",
+      component: selfservice,
+    },
+    {
+      path: "/employeeperformance",
+      name: "employeeperformance",
+      component: employeeperformance,
+    },
+    {
+      path: "/myfinance",
+      name: "myfinance",
+      component: myfinance,
+    },
+    {
+      path: "/leaveapplication",
+      name: "leaveapplication",
+      component: leaveapplication,
+    },
+    //EMPLOYEE COMPONENTS AND VIEWS
     {
       path: "/",
       name: "HelloWorld",

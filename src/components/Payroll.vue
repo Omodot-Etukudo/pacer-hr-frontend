@@ -53,6 +53,7 @@
           <button
             class="w-full hover:text-black text-gray-500 font-regular py-3 px-2 focus:outline-none hover:bg-gray-100 rounded-lg transition transition-colors duration-300 "
             type="button"
+            @click="sortBy('name')"
           >
             Sort by Name
           </button>
@@ -61,6 +62,7 @@
           <button
             class="w-full hover:text-black text-gray-500 font-regular py-3 px-2 focus:outline-none hover:bg-gray-100 rounded-lg transition transition-colors duration-300 "
             type="button"
+            @click="sortBy('role')"
           >
             Sort by Department
           </button>
@@ -201,6 +203,9 @@ export default {
   methods: {
     navigateTo(route) {
       this.$router.push(route);
+    },
+    sortBy(prop) {
+      this.salary_accounts.data.sort((a, b) => (a[prop] < b[prop] ? -1 : 1));
     },
   },
   data() {

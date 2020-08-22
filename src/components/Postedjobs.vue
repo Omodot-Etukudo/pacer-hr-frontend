@@ -54,6 +54,7 @@
           <button
             class="w-full hover:text-black text-gray-500 font-regular py-3 px-2 focus:outline-none hover:bg-gray-100 rounded-lg transition transition-colors duration-300 "
             type="button"
+            @click="sortBy('name')"
           >
             Sort by Name
           </button>
@@ -62,6 +63,7 @@
           <button
             class="w-full hover:text-black text-gray-500 font-regular py-3 px-2 focus:outline-none hover:bg-gray-100 rounded-lg transition transition-colors duration-300 "
             type="button"
+            @click="sortBy('role')"
           >
             Sort by Department
           </button>
@@ -166,6 +168,9 @@ export default {
       let filterArray = this.postedjobs.data.filter((a) => a.role !== role);
       this.postedjobs.data = filterArray;
       RecruitmentService.deleteJob(role);
+    },
+    sortBy(prop) {
+      this.postedjobs.data.sort((a, b) => (a[prop] < b[prop] ? -1 : 1));
     },
   },
   data() {

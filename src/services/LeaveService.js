@@ -6,6 +6,13 @@ export default {
   getApprovedLeave() {
     return fetch(HOST + "/approvedleave").then((res) => res.json());
   },
+  postLeave(credentials) {
+    return fetch(HOST + "/leaverequest", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(credentials),
+    }).then((res) => res.json());
+  },
   approveLeave(credentials) {
     return fetch(HOST + "/approvedleave", {
       method: "POST",

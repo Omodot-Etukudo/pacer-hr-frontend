@@ -67,7 +67,7 @@ export default {
   data() {
     return {
       employeeid: "",
-      password: ""
+      password: "",
     };
   },
   methods: {
@@ -77,7 +77,7 @@ export default {
     async Login() {
       const response = await AuthenticationService.login({
         employeeid: this.employeeid,
-        password: this.password
+        password: this.password,
       });
       localStorage.setItem("token", response.token);
       localStorage.setItem("userid", response.userid);
@@ -90,12 +90,20 @@ export default {
           .trim() == "human resource manager"
       ) {
         this.$router.push("dashboard");
+      } else if (
+        response.success &&
+        localStorage
+          .getItem("role")
+          .toLowerCase()
+          .trim() != "human resource manager"
+      ) {
+        this.$router.push("employeedashboard");
       } else {
         window.alert("Incorrect Pacer-HR Domain or Password");
         (this.employeeid = ""), (this.password = "");
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

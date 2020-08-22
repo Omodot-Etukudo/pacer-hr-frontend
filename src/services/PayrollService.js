@@ -11,4 +11,7 @@ export default {
     return fetch(HOST + "/finance").then((res) => res.json());
     // .then(data => data);
   },
+  getSalaryById(id) {
+    return fetch(`${HOST}/finance/${id}`).then((res) => res.json());
+  },
 };
