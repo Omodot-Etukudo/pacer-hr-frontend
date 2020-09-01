@@ -230,14 +230,10 @@ export default {
   methods: {
     async deleteApplicant(body) {
       const response = await RecruitmentService.deleteApplicant(body);
-      if (response.success) {
-        let filterArray = this.applications.data.filter((a) => a.body !== body);
-        this.applications.data = filterArray;
-        window.location.reload();
-        window.alert(response.message);
-      } else {
-        window.alert(response.message);
-      }
+      let filterArray = this.applications.data.filter((a) => a.body !== body);
+      this.applications.data = filterArray;
+      window.location.reload();
+      window.alert(response.message);
     },
     navigateTo() {
       this.$router.go(1);
