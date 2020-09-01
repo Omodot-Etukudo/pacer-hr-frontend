@@ -90,9 +90,14 @@
                   Resume/CV
                 </th>
                 <th
-                  class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                  class="pl-6 pr-2 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
                 >
                   Contact Details
+                </th>
+                <th
+                  class="px-2 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Action
                 </th>
               </thead>
               <tbody
@@ -170,6 +175,22 @@
                       </div>
                     </div>
                   </td>
+                  <td
+                    class="px-4 cursor-pointer"
+                    @click="deleteApplicant(items.applicantid)"
+                  >
+                    <svg
+                      viewBox="0 0 20 20"
+                      fill="#ad0000"
+                      class="x-circle w-6 h-6"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -207,6 +228,16 @@ export default {
     };
   },
   methods: {
+    async deleteApplicant(body) {
+      let filterArray = this.applications.data.filter((a) => a.body !== body);
+      this.applications.data = filterArray;
+      const response = await RecruitmentService.deleteApplicant(body);
+      if (response.success) {
+        window.alert(response.message);
+      } else {
+        window.alert(response.message);
+      }
+    },
     navigateTo() {
       this.$router.go(1);
     },

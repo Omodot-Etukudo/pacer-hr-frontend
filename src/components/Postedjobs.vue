@@ -167,7 +167,12 @@ export default {
     deleteJob(role) {
       let filterArray = this.postedjobs.data.filter((a) => a.role !== role);
       this.postedjobs.data = filterArray;
-      RecruitmentService.deleteJob(role);
+      const response = RecruitmentService.deleteJob(role);
+      if (response.success) {
+        window.alert(response.message);
+      } else {
+        window.alert(response.message);
+      }
     },
     sortBy(prop) {
       this.postedjobs.data.sort((a, b) => (a[prop] < b[prop] ? -1 : 1));

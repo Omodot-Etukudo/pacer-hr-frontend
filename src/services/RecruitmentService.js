@@ -1,5 +1,3 @@
-
-
 import { HOST } from "../../utils.js";
 export default {
   postJob(credentials) {
@@ -33,5 +31,12 @@ export default {
   },
   getJobById(jobid) {
     return fetch(`${HOST}/jobposting/${jobid}`).then((res) => res.json());
+  },
+  deleteApplicant(body) {
+    return fetch(HOST + "/applicants", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ applicantid: body }),
+    }).then((res) => res.JSON());
   },
 };
