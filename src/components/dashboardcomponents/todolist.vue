@@ -91,7 +91,7 @@ export default {
     return {
       newTodo: "",
       tasks: [],
-      name: localStorage.getItem("name")
+      name: localStorage.getItem("name"),
     };
   },
   mounted() {},
@@ -100,15 +100,15 @@ export default {
       if (newTodo.trim() === "") {
         console.log("Err");
       } else {
-        this.tasks.push({ task: newTodo, addedAt: "6th August 2020" });
+        this.tasks.push({ task: newTodo, addedAt: "1st September, 2020" });
         this.newTodo = null;
       }
     },
     deleteTodo(deletedTask) {
-      let filteredArray = this.tasks.filter(a => a.task !== deletedTask);
+      let filteredArray = this.tasks.filter((a) => a.task !== deletedTask);
       this.tasks = filteredArray;
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>

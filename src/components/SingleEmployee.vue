@@ -65,13 +65,15 @@
               </div>
               <h3 class="mb-2">Full Name</h3>
               <input
+                id="name"
                 type="text"
-                :value="employeeDetails.user.name.toUpperCase()"
+                :value="employeeDetails.user.name"
                 class="py-3 px-5 bg-bl focus:shadow-md focus:outline-none font-regular text-xl"
               />
               <p class="text-md text-blue-800 underline font-regular my-1"></p>
               <h3 class="mb-2 mt-4">Email Address</h3>
               <input
+                id="email"
                 type="text"
                 :value="employeeDetails.user.email"
                 class="py-3 px-5 focus:shadow-md transition-3ms focus:outline-none font-regular text-xl"
@@ -102,9 +104,10 @@
                     class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2"
                   >
                     <input
+                      id="role"
                       type="text"
                       class="py-3 px-5  transition-shadow focus:outline-none text-lg w-full focus:shadow-md "
-                      :value="employeeDetails.user.role.toUpperCase()"
+                      :value="employeeDetails.user.role"
                     />
                   </dd>
                 </div>
@@ -163,6 +166,7 @@
                     Delete Employee
                   </button>
                   <button
+                    @click="updateEmployee"
                     class="bg-blue-900 hover:bg-blue-700 text-white font-medium py-3 px-10 rounded focus:outline-none transition transition-colors duration-300 lg:my-0 mx-0 md:my-4 mx-0 sm:my-4 mx-0"
                   >
                     Confirm
@@ -185,6 +189,24 @@ export default {
   methods: {
     navigateTo() {
       this.$router.replace(`/employees`);
+    },
+    async updateEmployee() {
+      const response = await EmployeeService.updateEmployee(
+        {
+          employeeid: this.$route.params.id,
+          name: document.getElementById("name").value,
+          email: document.getElementById("email").value,
+          password: this.employeeDetails.user.password,
+          role: document.getElementById("role").value,
+        },
+        this.$route.params.id
+      );
+      if (response.success) {
+        window.alert(response.message);
+        this.$router.replace({ path: "/employees" });
+      } else {
+        window.alert(response.message);
+      }
     },
   },
   data() {

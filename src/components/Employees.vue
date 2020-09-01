@@ -62,13 +62,12 @@
               </svg>
             </div>
             <div class="col-span-8">
-              <form>
-                <input
-                  type="text"
-                  placeholder="Press enter to search"
-                  class="focus:outline-none w-full px-4 py-3 text-lg bg-gray-100"
-                />
-              </form>
+              <input
+                type="text"
+                v-model="search"
+                placeholder="Press enter to search"
+                class="focus:outline-none w-full px-4 py-3 text-lg bg-gray-100"
+              />
             </div>
           </div>
         </div>
@@ -143,7 +142,8 @@ export default {
   },
   data() {
     return {
-      users: null,
+      users: [],
+      search: "",
     };
   },
 
@@ -156,6 +156,12 @@ export default {
       window.alert("You need to login first");
     }
     this.users = await EmployeeService.getEmployees();
+    // console.log(this.users.data[1]);
+  },
+  computed: {
+    filteredEmployees() {
+      return this.users.data.filter((user) => user.name.includes(this.search));
+    },
   },
 };
 </script>

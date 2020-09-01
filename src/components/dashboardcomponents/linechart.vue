@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import EmployeeService from "@/services/EmployeeService.js";
 import Chart from "chart.js";
 export default {
   methods: {
@@ -29,7 +30,7 @@ export default {
             {
               // one line graph
               label: "Average Employee Performance",
-              data: [3.5, 2, 4.2, 4.6, 3, 3.5, 4],
+              data: [3.5, 2, 4.2, 4.6, 3, 3.5, 5],
               backgroundColor: [
                 "rgba(195,218,254,.5)",
                 // Blue
@@ -57,10 +58,14 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      performanceData: null,
+    };
   },
-  mounted() {
+  async mounted() {
     this.createChart("performance");
+    this.performanceData = await EmployeeService.getPerformance();
+    console.log(this.performanceData);
   },
 };
 </script>

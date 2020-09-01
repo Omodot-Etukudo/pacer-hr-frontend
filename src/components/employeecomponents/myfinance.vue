@@ -15,7 +15,7 @@
             <div
               class="rounded-full bg-gray-300 w-24 h-24 text-center font-regular text-6xl col-span-1"
             >
-              E
+              {{ this.name.charAt(0) }}
             </div>
             <div class="col-span-3 mx-6">
               <p class="text-2xl font-semibold mt-2">

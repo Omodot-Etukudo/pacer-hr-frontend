@@ -40,7 +40,7 @@
           <p class="font-semibold text-2xl text-right">
             Create Employee Account
           </p>
-          <p class="text-right text-lg font-hairline">
+          <p class="text-right text-lg font-light">
             Fill the form below to continue
           </p>
         </div>
@@ -225,8 +225,8 @@ export default {
         role: this.role.trim(),
         hiredate: this.hiredate.trim(),
       });
-      this.$router.push("createsalary");
       window.alert(response.message + ", proceed to create a Salary Account.");
+      this.$router.replace({ path: "/createsalary" });
     },
   },
   mounted() {

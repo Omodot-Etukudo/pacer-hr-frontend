@@ -37,9 +37,9 @@
                   Role
                 </th>
                 <th
-                  class="pl-1 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                  class="pl-8 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
                 >
-                  Go to Survey
+                  GRADE
                 </th>
               </thead>
               <tbody class="bg-white">
@@ -78,35 +78,22 @@
                   <td
                     class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"
                   >
-                    <div class="flex items-center" title="Open Survey">
-                      <button
-                        @click="
-                          navigateTo({ path: `/performance/${employeeid}` })
-                        "
-                        class="rounded-full w-10 px-2 py-2 bg-blue-100 text-white hover:shadow-md focus:outline-none transition transition-colors transition-shadow duration-300"
-                        title="Open Survey"
-                      >
-                        <svg
-                          viewBox="0 0 20 20"
-                          fill="#1F487E"
-                          class="chevron-double-right w-6 h-6"
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
-                            clip-rule="evenodd"
-                          ></path>
-                          <path
-                            fill-rule="evenodd"
-                            d="M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
-                            clip-rule="evenodd"
-                          ></path>
-                        </svg>
-                      </button>
-                    </div>
+                    <select name="" id=""
+                      ><option>Grade</option>
+                      <option>A (5)</option>
+                      <option>B (4)</option>
+                      <option>C (3)</option>
+                      <option>D (2)</option>
+                      <option>F (1)</option></select
+                    >
                   </td>
                 </tr>
               </tbody>
+              <button
+                class=" ml-5 my-5 w-full bg-blue-900 hover:bg-blue-700 text-white font-medium py-3 px-2 rounded focus:outline-none transition transition-colors duration-300"
+              >
+                Done
+              </button>
             </table>
           </div>
         </div>
@@ -128,7 +115,7 @@ export default {
   methods: {
     navigateTo(route) {
       this.$router.replace(route);
-    }
+    },
   },
   data() {
     return {
@@ -136,24 +123,28 @@ export default {
         {
           employeeid: "16ch021496",
           name: "Etukudo Omodot",
-          role: "Human Resource Manager"
+          role: "Human Resource Manager",
+          grade: 5,
         },
         {
           employeeid: "DO123456789",
           name: "Dogunro Oluwatobi",
-          role: "Human Resource Analyst"
+          role: "Human Resource Analyst",
+          grade: 2,
         },
         {
           employeeid: "IS5427791",
           name: "Ifeyimika Soderu",
-          role: "Senior IT Support Enginner"
+          role: "Senior IT Support Enginner",
+          grade: 4,
         },
         {
           employeeid: "EA973197391",
           name: "Akhigbe Emmanuel",
-          role: "Senior Cloud Enginner"
-        }
-      ]
+          role: "Senior Cloud Enginner",
+          grade: 3,
+        },
+      ],
     };
   },
   name: "Performance",
@@ -164,7 +155,7 @@ export default {
       this.$router.replace({ path: "/login" });
       window.alert("You need to login first");
     }
-  }
+  },
 };
 </script>
 

@@ -222,6 +222,7 @@ export default {
       });
       if (response.success) {
         window.alert(response.message);
+        this.$router.replace({ path: "/careers" });
       } else {
         window.alert(response.message);
       }

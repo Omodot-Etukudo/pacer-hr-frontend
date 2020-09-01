@@ -14,4 +14,11 @@ export default {
   getSalaryById(id) {
     return fetch(`${HOST}/finance/${id}`).then((res) => res.json());
   },
+  updateSalary(credentials, employeeid) {
+    return fetch(`${HOST}/finance/${employeeid}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(credentials),
+    }).then((res) => res.json());
+  },
 };

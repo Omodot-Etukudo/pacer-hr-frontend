@@ -190,7 +190,7 @@ export default {
             250,
       });
       if (response.success) {
-        this.$router.push("payroll");
+        this.$router.replace({ path: "/payroll" });
         window.alert("Salary account successfully added");
       } else {
         window.alert("Invalid Employee ID");

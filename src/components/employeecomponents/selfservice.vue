@@ -49,6 +49,7 @@
               </div>
               <h3 class="mb-2">Full Name</h3>
               <input
+                id="name"
                 type="text"
                 class="py-3 px-5 bg-bl focus:shadow-md focus:outline-none font-regular text-xl"
                 :value="employeeDetails.user.name"
@@ -56,6 +57,7 @@
               <p class="text-md text-blue-800 underline font-regular my-1"></p>
               <h3 class="mb-2 mt-4">Email Address</h3>
               <input
+                id="email"
                 type="text"
                 class="py-3 px-5 focus:shadow-md transition-3ms focus:outline-none font-regular text-xl"
                 :value="employeeDetails.user.email"
@@ -80,15 +82,16 @@
                   class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
                 >
                   <dt class="text-md font-semibold text-gray-800">
-                    Job Title
+                    Set New Password
                   </dt>
                   <dd
                     class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2"
                   >
                     <input
-                      type="text"
+                      id="password"
+                      type="password"
                       class="py-3 px-5  transition-shadow focus:outline-none text-lg w-full focus:shadow-md "
-                      :value="employeeDetails.user.role"
+                      :value="employeeDetails.user.password"
                     />
                   </dd>
                 </div>
@@ -126,6 +129,7 @@
                 </div>
                 <div class="py-2 my-4 px-6 text-right">
                   <button
+                    @click="updateEmployee"
                     class="bg-blue-900 hover:bg-blue-700 text-white font-medium py-3 px-10 rounded focus:outline-none transition transition-colors duration-300 lg:my-0 mx-0 md:my-4 mx-0 sm:my-4 mx-0"
                   >
                     Confirm
@@ -147,6 +151,20 @@ import EmployeeService from "../../services/EmployeeService.js";
 export default {
   methods: {
     navigateTo() {},
+    async updateEmployee() {
+      const response = await EmployeeService.updateEmployee(
+        {
+          employeeid: this.employeeDetails.user.employeeid,
+          name: document.getElementById("name").value,
+          email: document.getElementById("email").value,
+          password: document.getElementById("password").value,
+          role: this.employeeDetails.user.role,
+        },
+        this.$route.params.id
+      );
+      console.log(response);
+      window.alert(response.message);
+    },
   },
   data() {
     return {

@@ -17,6 +17,7 @@ import Createjob from "@/components/Createjob";
 import Performance from "@/components/Performance";
 import missing from "@/components/missing";
 import Survey from "@/components/Survey";
+import Singlesalary from "@/components/Singlesalary";
 import employeedashboard from "../components/employeecomponents/employeedashboard.vue";
 import employeeperformance from "../components/employeecomponents/employeeperformance.vue";
 import selfservice from "../components/employeecomponents/selfservice.vue";
@@ -113,6 +114,11 @@ export default new Router({
       path: "/payroll",
       name: "Payroll",
       component: Payroll,
+    },
+    {
+      path: "/payroll/:id",
+      name: "Singlesalary",
+      component: Singlesalary,
     },
     {
       path: "/createsalary",

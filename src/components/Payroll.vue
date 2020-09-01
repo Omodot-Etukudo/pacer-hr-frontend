@@ -102,6 +102,11 @@
                 >
                   Net Salary ($)
                 </th>
+                <th
+                  class="px-12 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Action
+                </th>
               </thead>
               <tbody
                 class="bg-white"
@@ -168,6 +173,21 @@
                   >
                     <div class="text-md leading-5 text-gray-900 font-semibold">
                       {{ items.netsalary }}
+                    </div>
+                  </td>
+                  <td
+                    class="pl-12 py-4 whitespace-no-wrap border-b border-gray-200"
+                  >
+                    <div
+                      class="text-md leading-5 text-blue-700 font-semibold underline"
+                    >
+                      <a
+                        @click="
+                          navigateTo({ path: `/payroll/${items.employeeid}` })
+                        "
+                        class=" cursor-pointer"
+                        >Open</a
+                      >
                     </div>
                   </td>
                 </tr>
