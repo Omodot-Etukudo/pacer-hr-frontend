@@ -18,4 +18,11 @@ export default {
       body: JSON.stringify(credentials),
     }).then((res) => res.json());
   },
+  deleteEmployee(body) {
+    return fetch(HOST + "/users", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ employeeid: body }),
+    }).then((res) => res.json());
+  },
 };

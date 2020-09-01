@@ -161,6 +161,7 @@
                 </div>
                 <div class="py-2 my-4 px-6 text-right">
                   <button
+                    @click="deleteUser(employeeDetails.user.employeeid)"
                     class="text-red-800 font-semibold mr-5 hover:shadow-md px-4 py-3"
                   >
                     Delete Employee
@@ -204,6 +205,15 @@ export default {
       if (response.success) {
         window.alert(response.message);
         this.$router.replace({ path: "/employees" });
+      } else {
+        window.alert(response.message);
+      }
+    },
+    async deleteUser(body) {
+      const response = await EmployeeService.deleteEmployee(body);
+      if (response.success) {
+        this.$router.replace({ path: "/employees" });
+        window.alert(response.message);
       } else {
         window.alert(response.message);
       }
