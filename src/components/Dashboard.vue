@@ -151,7 +151,7 @@ export default {
   methods: {
     navigateTo(route) {
       this.$router.push(route);
-    }
+    },
   },
   data() {
     return {
@@ -159,7 +159,7 @@ export default {
       employeenumber: null,
       approvedleave: null,
       leaverequest: null,
-      presentEmployees: null
+      presentEmployees: null,
     };
   },
   name: "Dashboard",
@@ -174,9 +174,9 @@ export default {
     this.approvedleave = await LeaveService.getApprovedLeave();
     this.leaverequest = await LeaveService.getLeaveRequest();
     const a = parseInt(this.employeenumber.data.length);
-    const b = parseInt(this.leaverequest.data.length);
+    const b = parseInt(this.approvedleave.data.length);
     this.presentEmployees = a - b;
-  }
+  },
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

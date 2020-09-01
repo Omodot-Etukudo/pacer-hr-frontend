@@ -229,10 +229,8 @@ export default {
   },
   methods: {
     async deleteApplicant(body) {
-      const response = await RecruitmentService.deleteApplicant(body);
-      let filterArray = this.applications.data.filter((a) => a.body !== body);
-      this.applications.data = filterArray;
       window.location.reload();
+      const response = await RecruitmentService.deleteApplicant(body);
       window.alert(response.message);
     },
     navigateTo() {
