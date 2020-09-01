@@ -229,11 +229,11 @@ export default {
   },
   methods: {
     async deleteApplicant(body) {
-      let filterArray = this.applications.data.filter((a) => a.body !== body);
-      this.applications.data = filterArray;
       const response = await RecruitmentService.deleteApplicant(body);
       if (response.success) {
         window.alert(response.message);
+        let filterArray = this.applications.data.filter((a) => a.body !== body);
+        this.applications.data = filterArray;
       } else {
         window.alert(response.message);
       }

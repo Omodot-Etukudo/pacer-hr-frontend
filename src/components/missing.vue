@@ -14,7 +14,7 @@
       <h3 class="text-center text-lg">Please check the URL and try again</h3>
     </div>
     <button
-      @click="navigateTo('dashboard')"
+      @click="goHome"
       class="lg:w-2/12 md:w-4/12 sm:w-6/12 my-12 bg-blue-900 hover:bg-blue-800 text-white font-semibold py-3 px-2 rounded focus:outline-none transition transition-colors duration-300"
     >
       Go to Dashboard
@@ -28,8 +28,8 @@ export default {
     return {};
   },
   methods: {
-    navigateTo(route) {
-      this.$router.replace(route);
+    goHome() {
+      this.$router.replace({ path: "/dashboard" });
     },
   },
 };
